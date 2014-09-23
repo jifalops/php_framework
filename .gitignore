@@ -1,0 +1,14 @@
+# OS garbage
+Thumbs.db
+.DS_Store
+
+# File locks (Windows)
+.~*
+~*
+
+# Internal files
+internal/
+
+# Server files
+.ftpquota
+error_log
