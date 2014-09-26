@@ -16,9 +16,12 @@
  * in a sub-directory. ".." represents the parent directory and can
  * be used repeatedly (i.e. '../../../header.php').
  */ 
- 
+
 define('APP_ROOT', __DIR__);					// Required before loading the framework.
 require_once('../framework.php');				// Load the framework.
+
+error_reporting(E_ALL & ~E_NOTICE);
+// TODO test
 
 // Include our private data (not part of the public code, assuming it is in .gitignore).
 require_once(INTERNAL_DIR.DS.'Internal.php');

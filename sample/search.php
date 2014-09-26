@@ -1,6 +1,6 @@
 <?php
   require_once('header.php');
-  require_once(INCLUDE_DIR.DS.'nav.php');  
+  require_once(INC_DIR.DS.'nav.php');  
 
   $table = htmlspecialchars($_GET['table']);
   $search = htmlspecialchars($_GET['q']);
@@ -28,10 +28,10 @@
     $sql = "SELECT * FROM `$table`";
 	if (!empty($search)) {
 		$sql .= " WHERE ";
-		bool first = true;
+		$first = true;
 		foreach ($fields as $field) {
-			if (!first) $sql .= " OR ";
-			else first = false;
+			if (!$first) $sql .= " OR ";
+			else $first = false;
 			$sql .= "`$field` LIKE %$search%";
 		}
 	}

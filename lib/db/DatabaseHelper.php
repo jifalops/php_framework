@@ -85,7 +85,9 @@ class DatabaseHelper {
     		}
 		}
 		return $results;         
-    }        
+    }    
+
+	
     
     /** 
      * Returns a single value: 
@@ -109,6 +111,16 @@ class DatabaseHelper {
     }
     
     
+	/**
+	 * Check if a table exists
+	 */
+	 function table_exists($table) {
+		foreach ($this->get_tables() as $t) {
+			if ($t == $table) return true;
+		}
+		return false;
+	 }
+	
     function get_tables() {        
         $tables = array();
 		$results = $this->query('SHOW TABLES;', false);

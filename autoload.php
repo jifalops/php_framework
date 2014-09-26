@@ -20,7 +20,7 @@ function __autoload($class_name) {
  * Omitted $filename or $extension matches everything.
  * Omitted $limit (or a limit of 0) means unlimited.
  */
-function find_files(&$matches, $directory, $filename=null, $extension=null, $limit=null,
+function find_files(&$matches, $directory=APP_ROOT, $filename=null, $extension=null, $limit=null,
 		$case_sensitive=true, $subdirs=true) {
 	// File system objects
 	$fsos = scandir($directory);

@@ -12,3 +12,4 @@ internal/
 # Server files
 .ftpquota
 error_log
+php_errors.log

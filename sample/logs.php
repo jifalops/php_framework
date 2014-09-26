@@ -1,7 +1,7 @@
 <?php	
 	require_once('header.php');
 
-	define('ERROR_LOG', 'error_log');       
+	define('ERROR_LOG', ini_get('error_log'));
 
 	$dev_level = $_GET['dev_level'];
     $db_level = $_GET['db_level'];
@@ -85,7 +85,7 @@
 			// and skip the private dir
             else if (is_dir($fso_full) 
 					&& substr($fso, 0, 1) != '.'
-					&& $fso_full != PRIVATE_DIR) {
+					&& $fso_full != INTERNAL_DIR) {
                 $subdir_errors = get_error_logs_recursive($fso_full);
 				if (!empty($subdir_errors)) {
 					foreach ($subdir_errors as $e) {
