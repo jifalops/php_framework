@@ -19,7 +19,7 @@ abstract class DatabaseTable {
 			else $first = false;
 			$sql .=  "`$f` " . $this->fields()[$f];
 		}
-		if (!empty($this->primary_key())) {
+		if ($this->primary_key()) {
 			$sql .= ", PRIMARY KEY (`{$this->primary_key()}`)";
 		}
 		$sql .= ')';
