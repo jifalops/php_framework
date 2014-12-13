@@ -8,7 +8,7 @@ abstract class DatabaseTable {
 	}
 	
 	function drop_table() {
-		$sql = 'DROP TABLE '.$this->table_name();
+		$sql = 'DROP TABLE `'.$this->table_name().'`';
 	}
 	
 	function create_table() {
