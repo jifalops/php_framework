@@ -17,7 +17,7 @@ class Log {
     const LEVEL_WARNING  = 4;
     const LEVEL_INFO     = 5;
     const LEVEL_DEBUG    = 6;
-    const LEVEL_VERBOSE  = 7;   
+    const LEVEL_VERBOSE  = 7;
     const MAX_LEVEL      = self::LEVEL_VERBOSE;
 
     private $file;
@@ -25,7 +25,7 @@ class Log {
     private $level;
 
     function __construct($file) {
-        $this->level = self::LEVEL_INFO;
+        $this->level = self::LEVEL_VERBOSE;
         if(!empty($file)) $this->open($file);
     }
 
@@ -50,7 +50,7 @@ class Log {
         if (empty($time)) $time = date('Y-m-d H:i:s O');
         $tag = $this->escape($tag);
         $msg = $this->escape($msg);
-        return fwrite($this->handle, implode(self::COL_SEPARATOR, 
+        return fwrite($this->handle, implode(self::COL_SEPARATOR,
             array($time, $this->get_level_string($level), $tag, $msg)) . self::ROW_SEPARATOR);
     }
 
@@ -64,28 +64,28 @@ class Log {
         return str_replace(self::COL_ESCAPE_TO, self::COL_ESCAPE_FROM, $text);
     }
     
-    function a($msg, $tag=null) { 
-        return $this->log(self::LEVEL_ASSERT, $msg, $tag); 
+    function a($msg, $tag=null) {
+        return $this->log(self::LEVEL_ASSERT, $msg, $tag);
     }
     
-    function e($msg, $tag=null) { 
-        return $this->log(self::LEVEL_ERROR, $msg, $tag); 
+    function e($msg, $tag=null) {
+        return $this->log(self::LEVEL_ERROR, $msg, $tag);
     }
     
-    function w($msg, $tag=null) { 
-        return $this->log(self::LEVEL_WARNING, $msg, $tag); 
+    function w($msg, $tag=null) {
+        return $this->log(self::LEVEL_WARNING, $msg, $tag);
     }
     
-    function i($msg, $tag=null) { 
-        return $this->log(self::LEVEL_INFO, $msg, $tag); 
+    function i($msg, $tag=null) {
+        return $this->log(self::LEVEL_INFO, $msg, $tag);
     }
 
-    function d($msg, $tag=null) { 
-        return $this->log(self::LEVEL_DEBUG, $msg, $tag); 
+    function d($msg, $tag=null) {
+        return $this->log(self::LEVEL_DEBUG, $msg, $tag);
     }
     
-    function v($msg, $tag=null) { 
-        return $this->log(self::LEVEL_VERBOSE, $msg, $tag); 
+    function v($msg, $tag=null) {
+        return $this->log(self::LEVEL_VERBOSE, $msg, $tag);
     }
 
     function get_level() {
@@ -101,7 +101,7 @@ class Log {
             case self::LEVEL_WARNING:  return self::LEVEL_WARNING.'-WARNING';
             case self::LEVEL_INFO:     return self::LEVEL_INFO.'-INFO';
             case self::LEVEL_DEBUG:    return self::LEVEL_DEBUG.'-DEBUG';
-            case self::LEVEL_VERBOSE:  return self::LEVEL_VERBOSE.'-VERBOSE';            
+            case self::LEVEL_VERBOSE:  return self::LEVEL_VERBOSE.'-VERBOSE';
         }
     }
 
@@ -132,11 +132,11 @@ class Log {
             );
         }
         return $records;
-    }   
+    }
 
     private function close() {
         return fclose($this->handle);
-    }   
+    }
 
     function __destruct() {
         $this->close();
@@ -145,7 +145,7 @@ class Log {
     function to_html($level, $css_class='Log.php', $css_id='') {
         $html = '';
         $records = $this->to_array();
-        $html .= "<table id='$css_id' class='$css_class'>".PHP_EOL;	
+        $html .= "<table id='$css_id' class='$css_class'>".PHP_EOL;
         $header = true;
         foreach ($records as $record) {
             if ($header) {
